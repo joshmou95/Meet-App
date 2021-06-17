@@ -87,3 +87,11 @@ Given the user wants to see a chart of upcoming events by city<br>
 When the user chooses particular city<br>
 Then the user see a chart showing upcoming events in that city<br>
 
+
+From terminal:
+cd static-site-test
+http-server 
+test-auth-server.html
+Get OAuth URL
+Click to Authorize
+input code and press Get Token
