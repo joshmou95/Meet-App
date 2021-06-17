@@ -167,7 +167,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/auth-server/dev/1623893118524-2021-06-17T01:25:18.524Z/auth-server.zip"
+          "S3Key": "serverless/auth-server/dev/1623894294963-2021-06-17T01:44:54.963Z/auth-server.zip"
         },
         "Handler": "handler.getAuthURL",
         "Runtime": "nodejs12.x",
@@ -200,7 +200,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/auth-server/dev/1623893118524-2021-06-17T01:25:18.524Z/auth-server.zip"
+          "S3Key": "serverless/auth-server/dev/1623894294963-2021-06-17T01:44:54.963Z/auth-server.zip"
         },
         "Handler": "handler.getAccessToken",
         "Runtime": "nodejs12.x",
@@ -226,24 +226,24 @@
         "GetAccessTokenLogGroup"
       ]
     },
-    "GetAuthURLLambdaVersion0TU0a5wvTL6vXzmRcfkzRfOTjFkj4ClBFpl1MDImdw8": {
+    "GetAuthURLLambdaVersioncXUjbinvLFg5fSTRwVip8P8L1ub3NEKs88DcJSjqaY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAuthURLLambdaFunction"
         },
-        "CodeSha256": "wQr2P5TyIES5MCfFR/bFylcRerczt7YwPt8VMEkWnBA="
+        "CodeSha256": "cy8gQ24W89Ym74PC51BrJxi+glyRg4NAk07XaR9JJoM="
       }
     },
-    "GetAccessTokenLambdaVersionpiYINQexvjpwm0zReSoLfLjsOTJdc2YrPGP5NqsCKI": {
+    "GetAccessTokenLambdaVersionKfXdYfN0M0vZ5uPPgF1WEMv3s32cxHejzeP4pytiFg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetAccessTokenLambdaFunction"
         },
-        "CodeSha256": "wQr2P5TyIES5MCfFR/bFylcRerczt7YwPt8VMEkWnBA="
+        "CodeSha256": "cy8gQ24W89Ym74PC51BrJxi+glyRg4NAk07XaR9JJoM="
       }
     },
     "ApiGatewayRestApi": {
@@ -395,7 +395,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1623893115322": {
+    "ApiGatewayDeployment1623894291779": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -495,7 +495,7 @@
     "GetAuthURLLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAuthURLLambdaVersion0TU0a5wvTL6vXzmRcfkzRfOTjFkj4ClBFpl1MDImdw8"
+        "Ref": "GetAuthURLLambdaVersioncXUjbinvLFg5fSTRwVip8P8L1ub3NEKs88DcJSjqaY"
       },
       "Export": {
         "Name": "sls-auth-server-dev-GetAuthURLLambdaFunctionQualifiedArn"
@@ -504,7 +504,7 @@
     "GetAccessTokenLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetAccessTokenLambdaVersionpiYINQexvjpwm0zReSoLfLjsOTJdc2YrPGP5NqsCKI"
+        "Ref": "GetAccessTokenLambdaVersionKfXdYfN0M0vZ5uPPgF1WEMv3s32cxHejzeP4pytiFg"
       },
       "Export": {
         "Name": "sls-auth-server-dev-GetAccessTokenLambdaFunctionQualifiedArn"
