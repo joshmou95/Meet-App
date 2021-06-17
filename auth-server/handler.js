@@ -39,6 +39,8 @@ const oAuth2Client = new google.auth.OAuth2(
  * Google and be authorized to see your calendar. 
  * After logging in, they’ll receive a code as a URL parameter.
  */
+
+// The getAuthURL() function returns an authorization URL that your users can visit to authorize the app and get their USER_AUTHORIZATION_CODE
 module.exports.getAuthURL = async () => {
   /**
    * Scopes array passed to the `scope` option. 
@@ -103,3 +105,49 @@ module.exports.getAccessToken = async (event) => {
     });
 };
 
+module.exports.getCalendarEvents = async (event) => {
+  // The values used to instantiate the OAuthClient are at the top of the file
+  const oAuth2Client = new  google.auth.OAuth2(
+    client_id,
+    client_secret,
+    redirect_uris[0]
+  );
+  // Decode access token extracted from the URL query
+  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+  oAuth2Client.setCredentials({ access_token });
+
+  return new Promise((resolve, reject) => {
+    calendar.events.list(
+      {
+        calendarId: calendar_id,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+      (error, response) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(response);
+        }
+      }
+    );
+  })
+    .then((results) => {
+      return {
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({ events: results.data.items })
+      };
+    })
+    .catch((err) => {
+      console.error(err);
+      return {
+        statusCode: 500,
+        body: JSON.stringify(err),
+      };
+    });
+};

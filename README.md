@@ -95,3 +95,7 @@ test-auth-server.html
 Get OAuth URL
 Click to Authorize
 input code and press Get Token
+
+When adding new functions to handler.js
+cd auth-server
+serverless deploy
