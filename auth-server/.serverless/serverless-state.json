@@ -187,7 +187,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1623880732613-2021-06-16T21:58:52.613Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1623893118524-2021-06-17T01:25:18.524Z/auth-server.zip"
               },
               "Handler": "handler.getAuthURL",
               "Runtime": "nodejs12.x",
@@ -220,7 +220,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/auth-server/dev/1623880732613-2021-06-16T21:58:52.613Z/auth-server.zip"
+                "S3Key": "serverless/auth-server/dev/1623893118524-2021-06-17T01:25:18.524Z/auth-server.zip"
               },
               "Handler": "handler.getAccessToken",
               "Runtime": "nodejs12.x",
@@ -415,7 +415,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1623880729262": {
+          "ApiGatewayDeployment1623893115322": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -702,7 +702,7 @@
     "artifact": "/Users/joshmou/careerfoundry/Meet-App/auth-server/.serverless/auth-server.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/auth-server/dev/1623880732613-2021-06-16T21:58:52.613Z",
+    "artifactDirectoryName": "serverless/auth-server/dev/1623893118524-2021-06-17T01:25:18.524Z",
     "artifact": "auth-server.zip"
   }
 }
