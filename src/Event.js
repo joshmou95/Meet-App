@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
-// (summary, start, htmlLink, description)
 class Event extends Component {
   state = {
-    event: {},
     showDetails: false
   }
 
@@ -14,16 +12,16 @@ class Event extends Component {
   }
 
   render() {
-    const { events } = this.props;
+    const { event } = this.props;
     return <div className='event'>
-      <h1 className='name'>{events.summary}</h1>
-      <p>{events.start}</p>
+      <h1 className='name'>{event.summary}</h1>
+      <p>{event.start}</p>
 
       {this.state.showDetails && (
         <div className='event-details'>
           <h2>About event:</h2>
-          <a href={events.htmlLink}>See Details on Google Calendar</a>
-           <p>{events.description}</p>
+          <a href={event.htmlLink}>See Details on Google Calendar</a>
+           <p>{event.description}</p>
         </div>
       )}
 
