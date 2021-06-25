@@ -5,7 +5,7 @@ import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
 import { mockData } from '../mock-data';
-import { extractLocations } from '../api';
+import { extractLocations, getEvents } from '../api';
 
 
 
@@ -67,14 +67,12 @@ describe('<App /> integration', () => {
     const selectedCity = suggestions[selectedIndex];
     // click is mimicked in CitySearchWrapper instance, selectedCity is passed to it
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
-    // getEvents from the API ascynchronously
     const allEvents = await getEvents();
     // list of events is filtered against the selected city 
     const eventsToShow = allEvents.filter(event => event.location === selectedCity);
     // compares state of events to eventsToShow
     expect(AppWrapper.state('events')).toEqual(eventsToShow);
     AppWrapper.unmount();
-
-  })
+  });
 
 })
