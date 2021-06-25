@@ -12,10 +12,11 @@ class Event extends Component {
   }
 
   render() {
+    // props passed from EventList Component
     const { event } = this.props;
     return <div className='event'>
       <h1 className='name'>{event.summary}</h1>
-      <p>{event.start}</p>
+      {/* <p>{event.start}</p> */}
 
       {this.state.showDetails && (
         <div className='event-details'>
