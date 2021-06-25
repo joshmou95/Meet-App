@@ -21,6 +21,8 @@ class CitySearch extends Component {
     this.setState({
       query: suggestion
     });
+    // pass the clicked suggestion to the passed updateEvents prop
+    this.props.updateEvents(suggestion);
   }
 
   render() {
