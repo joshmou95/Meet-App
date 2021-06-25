@@ -3,6 +3,7 @@ import Event from "./Event";
 
 class EventList extends Component {
   render() {
+    // props passed from App Component
     const { events } = this.props;
     return (
       <ul className="EventList">
