@@ -14,15 +14,20 @@ class Event extends Component {
   render() {
     // props passed from EventList Component
     const { event } = this.props;
+
     return <div className='event'>
       <h1 className='name'>{event.summary}</h1>
-      {/* <p>{event.start}</p> */}
+
+      <p>
+      {/* {event.start.dateTime}<br /> */}
+          @ {event.summary} | {event.location}
+      </p>
 
       {this.state.showDetails && (
         <div className='event-details'>
-          <h2>About event:</h2>
+          <h3>About event:</h3>
           <a href={event.htmlLink}>See Details on Google Calendar</a>
-           <p>{event.description}</p>
+           <p className='description'>{event.description}</p>
         </div>
       )}
 
