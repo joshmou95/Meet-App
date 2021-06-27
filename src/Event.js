@@ -17,9 +17,11 @@ class Event extends Component {
 
     return <div className='event'>
       <h1 className='name'>{event.summary}</h1>
-
+      <p>{new Date(event.start.dateTime).toLocaleDateString
+      ('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZone: 'utc', timeZoneName: 'short' })
+      }
+      </p>
       <p>
-      {/* {event.start.dateTime}<br /> */}
           @ {event.summary} | {event.location}
       </p>
 
