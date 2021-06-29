@@ -5,7 +5,7 @@ import  NumberOfEvents from '../NumberOfEvents';
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
+    NumberOfEventsWrapper = shallow(<NumberOfEvents updateEvents={() => {}} />);
   });
 
   test('render number input', () => {
@@ -13,17 +13,17 @@ describe('<NumberOfEvents /> component', () => {
   })
   
   test('renders number input correctly', () => {
-    const eventNumber = NumberOfEventsWrapper.state('eventNumber');
-    expect(NumberOfEventsWrapper.find('.event-number').prop('value')).toBe(eventNumber);
+    const numberOfEvents = NumberOfEventsWrapper.state('numberOfEvents');
+    expect(NumberOfEventsWrapper.find('.event-number').prop('value')).toBe(numberOfEvents);
   });
 
   test('change state when text input changes', () => {
     NumberOfEventsWrapper.setState({
-      eventNumber: 10
+      numberOfEvents: 10
     });
     const eventObject = { target: { value: 20 }};
     NumberOfEventsWrapper.find('.event-number').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('eventNumber')).toBe(20);
+    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(20);
   })
 
 });
