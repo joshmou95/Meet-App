@@ -9,7 +9,8 @@ import './nprogress.css';
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    numberOfEvents: 32
   }
 
   componentDidMount() {
@@ -27,23 +28,32 @@ class App extends Component {
   }
 
   updateEvents = (location) => {
+    console.log('initial location', location);
     getEvents().then((events) => {
       // check if value is 'all'
-      const locationEvents = (location === 'all') 
-      ? events :
+      console.log('events from updateEvents', events);
+      const locationEvents = (location === 'all')
+      ? events 
+      :
       events.filter((event) => event.location === location);
       this.setState({
         events: locationEvents
       });
+      console.log('locationEvents', locationEvents)
     });
   }
 
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents />
-        <EventList events={this.state.events} />
+        <CitySearch 
+        locations={this.state.locations} 
+        updateEvents={this.updateEvents} />
+        <NumberOfEvents 
+        numberOfEvents={this.state.numberOfEvents} 
+        updateEvents={this.updateEvents} />
+        <EventList 
+        events={this.state.events} />
       </div>
     );
   }
