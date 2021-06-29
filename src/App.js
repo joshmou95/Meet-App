@@ -27,8 +27,9 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location) => {
+  updateEvents = (location, eventCount) => {
     console.log('initial location', location);
+    console.log('initial eventCount', eventCount);
     getEvents().then((events) => {
       // check if value is 'all'
       console.log('events from updateEvents', events);
