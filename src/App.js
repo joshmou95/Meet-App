@@ -18,7 +18,11 @@ class App extends Component {
     getEvents().then((events) => {
       if (this.mounted) {
       // make API call and save initial data to state
-      this.setState({ events, locations: extractLocations(events) });
+      this.setState({ 
+        events, 
+        locations: extractLocations(events),
+        numberOfEvents: 32
+      });
       }
     });
   }
