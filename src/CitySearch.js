@@ -25,6 +25,7 @@ class CitySearch extends Component {
     });
     // pass the clicked suggestion to the passed updateEvents prop
     this.props.updateEvents(suggestion);
+    console.log('handleItemClicked', suggestion);
   }
 
   render() {
