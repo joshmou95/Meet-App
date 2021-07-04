@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Event from "./Event";
-import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row';
 
 class EventList extends Component {
