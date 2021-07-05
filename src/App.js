@@ -5,12 +5,17 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
+import Container from 'react-bootstrap/Container';
 
 class App extends Component {
-  state = {
-    events: [],
-    locations: [],
-    numberOfEvents: 32
+  constructor(props) {
+    super(props);
+    this.state = {
+      events: [],
+      locations: [],
+      numberOfEvents: 10
+    }
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -27,35 +32,44 @@ class App extends Component {
     this.mounted = false;
   }
 
-  updateEvents = (location, eventCount) => {
-    console.log('initial location', location);
-    console.log('initial eventCount', eventCount);
+  updateEvents = (location) => {
+    const eventCount = this.state.numberOfEvents;
+    // console.log('initial location', location);
+    // console.log('initial eventCount', eventCount);
     getEvents().then((events) => {
       // check if value is 'all'
-      console.log('events from updateEvents', events);
+      // console.log('events from updateEvents', events);
       const locationEvents = (location === 'all')
-      ? events 
+      ? events.slice(0, eventCount)
       :
       events.filter((event) => event.location === location);
       this.setState({
-        events: locationEvents
+        events: locationEvents.slice(0, eventCount)
       });
-      console.log('locationEvents', locationEvents)
+      // console.log('locationEvents', locationEvents);
+      // console.log('locationEvents Count', eventCount);
     });
+  }
+
+  handleChange(event) {
+    this.setState({
+      numberOfEvents: event.target.value
+    })
   }
 
   render() {
     return (
-      <div className="App">
+      <Container className="App" bg="dark">
+        <h1 className="mb-2">Meet App</h1>
         <CitySearch 
         locations={this.state.locations} 
         updateEvents={this.updateEvents} />
         <NumberOfEvents 
-        numberOfEvents={this.state.numberOfEvents} 
-        updateEvents={this.updateEvents} />
+        input={this.state.numberOfEvents} 
+        handleChange={this.handleChange} />
         <EventList 
         events={this.state.events} />
-      </div>
+      </Container>
     );
   }
 }
