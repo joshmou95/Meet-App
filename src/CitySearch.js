@@ -33,7 +33,7 @@ class CitySearch extends Component {
     return (
       <Form>
         <Form.Label>Type City Name or See All Cites:</Form.Label>
-        <Form.Group className="CitySearch mb-3">
+        <Form.Group className="search mb-3">
           <Form.Control 
             type="text"
             className="city"
