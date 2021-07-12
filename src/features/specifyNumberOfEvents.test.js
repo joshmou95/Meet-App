@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import App from '../App';
 
 import { loadFeature, defineFeature } from 'jest-cucumber';
@@ -26,18 +26,17 @@ defineFeature(feature, test => {
 
 
 test('User can change the number of events they want to see.', ({ given, when, then }) => {
-    let AppWrapper
+    let AppWrapper;
     given('the list of events is displayed', () => {
-      AppWrapper = await mount(<App />);
-      AppWrapper.find('.event-number').simulate('change', { target: { value: '2' } });
+      AppWrapper = mount(<App />)
     });
 
     when('the user enters a number of events they want to see', () => {
-
+      AppWrapper.find('.event-number').hostNodes().simulate('change', { target: { value: '2' } });
     });
 
     then('that specified number of events is displayed', () => {
-
+    expect(AppWrapper.state('numberOfEvents')).toBe('2');
     });
 });
 
