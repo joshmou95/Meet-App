@@ -91,7 +91,7 @@ describe('<App /> integration', () => {
     const AppEventsState = AppWrapper.state('numberOfEvents');
     // compare state to props
     expect(AppEventsState).not.toEqual(undefined);
-    expect(AppWrapper.find(NumberOfEvents).props().input).toEqual(AppEventsState);
+    expect(AppWrapper.find(NumberOfEvents).state().numberOfEvents).toEqual(AppEventsState);
     // unmount after test
     AppWrapper.unmount();
   });
