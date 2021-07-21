@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { InfoAlert } from './Alert';
 import Form from 'react-bootstrap/Form';
 
 class CitySearch extends Component {
@@ -10,19 +11,30 @@ class CitySearch extends Component {
 
   handleInputChanged = (event) => {
     const value = event.target.value;
+    this.setState({showSuggestions:true});
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
-    this.setState({ 
-      query: value,
-      suggestions,
-     });
+    if (suggestions.length === 0) {
+      this.setState({
+        query: value,
+        infoText: 'We cannot find the city you are looking for, try again.',
+      });
+    } else {
+      return this.setState({
+        query: value,
+        suggestions,
+        infoText:''
+      });
+    }
   }
 
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
-      showSuggestions: false
+      suggestions: [],
+      showSuggestions: false,
+      infoText:''
     });
     // pass the clicked suggestion to the passed updateEvents prop
     this.props.updateEvents(suggestion);
@@ -31,16 +43,20 @@ class CitySearch extends Component {
 
   render() {
     return (
-      <Form>
-        <Form.Label>Type City Name or See All Cites:</Form.Label>
-        <Form.Group className="search mb-3">
-          <Form.Control 
+      <Form className="CitySearch">
+        <br />
+        <Form.Group className="search">
+        <Form.Text>
+        <InfoAlert text={this.state.infoText} />
+        </Form.Text>
+          <Form.Control
             type="text"
             className="city"
+            placeholder="Search for city"
             value={this.state.query}
             onChange={this.handleInputChanged}
             onFocus={() => {this.setState({ showSuggestions: true }) }}
-          />
+          />           
           {/* if showSuggestions is true the list will be visible, otherwise not */}
           <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
             {this.state.suggestions.map((suggestion) => (
