@@ -94,19 +94,20 @@ class App extends Component {
   render() {
     const { numberOfEvents } = this.state
     return (
-      <Container className="App" bg="dark">
-        <h1 className="mb-2">Meet App</h1>
-        <CitySearch 
-        locations={this.state.locations} 
-        updateEvents={this.updateEvents} />
-        <NumberOfEvents 
-        // input={this.state.numberOfEvents} 
-        // handleChange={this.handleChange} 
-        numberOfEvents={numberOfEvents}
-        updateEvents={this.updateEvents} />
-        <EventList 
-        events={this.state.events} />
-      </Container>
+      <div>
+        <Container className="App" bg="dark">
+          <CitySearch 
+          locations={this.state.locations} 
+          updateEvents={this.updateEvents} />
+          <NumberOfEvents 
+          // input={this.state.numberOfEvents} 
+          // handleChange={this.handleChange} 
+          numberOfEvents={numberOfEvents}
+          updateEvents={this.updateEvents} />
+          <EventList 
+          events={this.state.events} />
+        </Container>
+      </div>
     );
   }
 }
