@@ -46,6 +46,7 @@ input[type="number"] {
   flex-direction: column;
   flex-basis: 300px;
   max-width: 300px;
+  text-align: center;
   margin: auto;
   position: relative;
 }
