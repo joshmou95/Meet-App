@@ -45,7 +45,7 @@ class CitySearch extends Component {
     return (
       <Form className="CitySearch">
         <br />
-        <Form.Group className="search">
+        <Form.Group className="search mb-4">
         <Form.Text>
         <InfoAlert text={this.state.infoText} />
         </Form.Text>
