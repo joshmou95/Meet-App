@@ -35,7 +35,7 @@ class NumberOfEvents extends Component {
             <Form.Label size="sm">Number of Events:</Form.Label>
           <Form.Control size="sm"
             type="number"
-            className='event-number'
+            className="event-number mb-2"
             value={numberOfEvents}
             max={32}
             min={1}
