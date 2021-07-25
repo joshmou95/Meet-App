@@ -44,10 +44,11 @@ class CitySearch extends Component {
   render() {
     return (
       <Form className="CitySearch">
-        <Form.Text>
-          <InfoAlert text={this.state.infoText} />
+          <Form.Label className="mb-0">Choose your nearest city</Form.Label>
+          <Form.Text>
+            <InfoAlert text={this.state.infoText} />
           </Form.Text>     
-        <Form.Group className="search mb-4">
+        <Form.Group className="search mt-2">
           <Form.Control
             type="text"
             className="city"
