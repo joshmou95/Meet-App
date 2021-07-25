@@ -63,39 +63,12 @@ class App extends Component {
     }
   }
 
-
-  // updateEvents = (location, eventCount) => {
-  //   const { numberOfEvents } = this.state
-  //   // console.log('initial location', location);
-  //   console.log('initial state', numberOfEvents);
-  //   getEvents().then((response) => {
-  //     // check if value is 'all'
-  //     // console.log('events from updateEvents', events);
-  //     const locationEvents = (location === 'all')
-  //     ? response.events
-  //     :
-  //     response.events.filter((event) => event.location === location);
-  //     this.setState({
-  //       events: locationEvents.slice(0, numberOfEvents),
-  //       numberOfEvents: eventCount
-  //     });
-  //     // console.log('locationEvents', locationEvents);
-  //     // console.log('locationEvents Count', eventCount);
-  //   });
-  // }
-
-  // handleChange = (event) => {
-  //   // this.updateEvents();
-  //   this.setState({
-  //     numberOfEvents: event.target.value,
-  //   });
-  // }
-
   render() {
     const { numberOfEvents } = this.state
     return (
       <div>
         <Container className="App" bg="dark">
+          <h1>Meet App</h1>
           <CitySearch 
           locations={this.state.locations} 
           updateEvents={this.updateEvents} />
