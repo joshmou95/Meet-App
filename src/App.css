@@ -118,9 +118,13 @@ input[type="number"] {
 }
 
 .numberOfEvents {
-  width: 200px;
+  width: 250px;
   margin: 20px auto;
   text-align: center;
+}
+
+.event-number {
+  width: 200px;
 }
 
 .button-wrapper {
@@ -132,8 +136,11 @@ input[type="number"] {
 }
 
 .Alert {
-  position: fixed;
-  top: 20px;
+  position: sticky;
+  /* top: 10px;
+  bottom: 10px; */
+  margin: 20px 20px auto;
+  min-height: 25px;
 }
 
 .data-vis-wrapper {
