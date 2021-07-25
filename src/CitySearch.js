@@ -44,11 +44,10 @@ class CitySearch extends Component {
   render() {
     return (
       <Form className="CitySearch">
-        <br />
-        <Form.Group className="search mb-4">
         <Form.Text>
-        <InfoAlert text={this.state.infoText} />
-        </Form.Text>
+          <InfoAlert text={this.state.infoText} />
+          </Form.Text>     
+        <Form.Group className="search mb-4">
           <Form.Control
             type="text"
             className="city"
@@ -56,7 +55,7 @@ class CitySearch extends Component {
             value={this.state.query}
             onChange={this.handleInputChanged}
             onFocus={() => {this.setState({ showSuggestions: true }) }}
-          />           
+          />
           {/* if showSuggestions is true the list will be visible, otherwise not */}
           <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none' }}>
             {this.state.suggestions.map((suggestion) => (
