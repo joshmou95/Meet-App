@@ -31,7 +31,7 @@ class NumberOfEvents extends Component {
     const { numberOfEvents } = this.state
     return (
       <Form>
-        <Form.Group className='numberOfEvents mb-4'>
+        <Form.Group className='numberOfEvents'>
             <Form.Label size="sm">Number of Events:</Form.Label>
           <Form.Control size="sm"
             type="number"
