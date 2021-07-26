@@ -10,7 +10,7 @@ function WelcomeScreen(props) {
           Log in to see upcoming events around the world for
           full-stack
           developers
-      </h4>
+        </h4>
         <div className="button_cont" align="center">
           <div class="google-btn">
             <div class="google-icon-wrapper">
@@ -33,9 +33,10 @@ function WelcomeScreen(props) {
           rel="nofollow noopener"
         >
           Privacy policy
-      </a>
+        </a>
       </div> 
     )
     : null 
 }
+
 export default WelcomeScreen;
