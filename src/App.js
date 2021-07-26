@@ -3,10 +3,12 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { extractLocations, getEvents } from './api';
+import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 import Container from 'react-bootstrap/Container';
 import { WarningAlert } from './Alert';
+import WelcomeScreen from './WelcomeScreen';
+
 
 class App extends Component {
   constructor(props) {
@@ -15,13 +17,14 @@ class App extends Component {
       events: [],
       locations: [],
       numberOfEvents: 32,
-      currentLocation: 'all'
+      currentLocation: 'all',
+      showWelcomeScreen: undefined
     }
     // this.handleChange = this.handleChange.bind(this);
 
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
     if (!navigator.onLine) {
       this.setState({
@@ -32,14 +35,24 @@ class App extends Component {
         warningText: ''
       });
     }
-    getEvents().then((events) => {
-      if (this.mounted) {
-      // make API call and save initial data to state
-      this.setState({ 
-        events: events.slice(0, this.state.numberOfEvents), 
-        locations: extractLocations(events) });
-      }
-    });
+    // get token from localStorage
+    const accessToken = localStorage.getItem('access_token');
+    // verify if token is valid
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search)
+    const code = searchParams.get("code");
+
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+        // make API call and save initial data to state
+        this.setState({ 
+          events: events.slice(0, this.state.numberOfEvents), 
+          locations: extractLocations(events) });
+        }
+      });
+    }
   }
 
   componentWillUnmount(){
@@ -74,6 +87,7 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.showWelcomeScreen === undefined) return <div className="App" />
     const { numberOfEvents } = this.state
     return (
       <div>
@@ -88,6 +102,8 @@ class App extends Component {
           updateEvents={this.updateEvents} />
           <EventList 
           events={this.state.events} />
+          <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }} />
         </Container>
       </div>
     );
