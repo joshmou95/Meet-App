@@ -6,6 +6,7 @@ import NumberOfEvents from './NumberOfEvents';
 import { extractLocations, getEvents } from './api';
 import './nprogress.css';
 import Container from 'react-bootstrap/Container';
+import { WarningAlert } from './Alert';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,15 @@ class App extends Component {
       this.setState({ 
         events: events.slice(0, this.state.numberOfEvents), 
         locations: extractLocations(events) });
+      }
+      if (!navigator.onLine) {
+        this.setState({
+          warningText: 'App using data from cache while offline',
+        });
+      } else {
+        return this.setState({
+          warningText: ''
+        });
       }
     });
   }
@@ -68,6 +78,7 @@ class App extends Component {
     return (
       <div>
         <Container className="App" bg="dark">
+        <WarningAlert text={this.state.warningText} />
           <h1>Meet App</h1>
           <CitySearch 
           locations={this.state.locations} 
