@@ -18,7 +18,7 @@ export const extractLocations = (events) => {
 };
 
 // check whether token is valid or not, redirect if not. 
-const checkToken = async (accessToken) => {
+export const checkToken = async (accessToken) => {
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
