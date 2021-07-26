@@ -23,6 +23,15 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'List may not be up to date while offline',
+      });
+    } else {
+      this.setState({
+        warningText: ''
+      });
+    }
     getEvents().then((events) => {
       if (this.mounted) {
       // make API call and save initial data to state
@@ -31,15 +40,6 @@ class App extends Component {
         locations: extractLocations(events) });
       }
     });
-    if (!navigator.onLine) {
-      this.setState({
-        warningText: 'List may not be up to date while offline',
-      });
-    } else {
-      return this.setState({
-        warningText: ''
-      });
-    }
   }
 
   componentWillUnmount(){
