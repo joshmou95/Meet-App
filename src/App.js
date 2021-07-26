@@ -25,7 +25,7 @@ class App extends Component {
     this.mounted = true;
     if (!navigator.onLine) {
       this.setState({
-        warningText: 'List may not be up to date while offline',
+        warningText: 'Currently not online. List may not be up to date.',
       });
     } else {
       this.setState({
@@ -78,16 +78,14 @@ class App extends Component {
     return (
       <div>
         <Container className="App" bg="dark">
+          <WarningAlert text={this.state.warningText} />
           <h1>Meet App</h1>
           <CitySearch 
           locations={this.state.locations} 
           updateEvents={this.updateEvents} />
           <NumberOfEvents 
-          // input={this.state.numberOfEvents} 
-          // handleChange={this.handleChange} 
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents} />
-          <WarningAlert text={this.state.warningText} />
           <EventList 
           events={this.state.events} />
         </Container>
