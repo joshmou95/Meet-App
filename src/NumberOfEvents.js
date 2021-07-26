@@ -9,7 +9,6 @@ class NumberOfEvents extends Component {
   }
 
   handleChange = (event) => {
-    // console.log('handleChange event', event)
     const value = event.target.value;
     if ( value < 1 || value > 32 ) {
       this.setState({
@@ -40,6 +39,7 @@ class NumberOfEvents extends Component {
             max={32}
             min={1}
             onChange={this.handleChange}
+            onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
           />
           <Form.Text>
             <ErrorAlert text={this.state.errorText} />
