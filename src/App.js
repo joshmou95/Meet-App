@@ -30,16 +30,16 @@ class App extends Component {
         events: events.slice(0, this.state.numberOfEvents), 
         locations: extractLocations(events) });
       }
-      if (!navigator.onLine) {
-        this.setState({
-          warningText: 'App using data from cache while offline',
-        });
-      } else {
-        return this.setState({
-          warningText: ''
-        });
-      }
     });
+    if (!navigator.onLine) {
+      this.setState({
+        warningText: 'List may not be up to date while offline',
+      });
+    } else {
+      return this.setState({
+        warningText: ''
+      });
+    }
   }
 
   componentWillUnmount(){
@@ -78,7 +78,6 @@ class App extends Component {
     return (
       <div>
         <Container className="App" bg="dark">
-        <WarningAlert text={this.state.warningText} />
           <h1>Meet App</h1>
           <CitySearch 
           locations={this.state.locations} 
@@ -88,6 +87,7 @@ class App extends Component {
           // handleChange={this.handleChange} 
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents} />
+          <WarningAlert text={this.state.warningText} />
           <EventList 
           events={this.state.events} />
         </Container>
