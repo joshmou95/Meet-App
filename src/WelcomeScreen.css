@@ -1,9 +1,15 @@
 .WelcomeScreen {
   position: fixed;
-  width: 100%;
+  width: 80%;
   height: 100%;
-  top: 0;
+  top: 10px;
   background: white;
+}
+
+.button_cont {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 
 .login-button {
@@ -25,6 +31,7 @@
   background-color: #4285f4;
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+  align-self: center;
 }
 
 .google-btn:hover {
@@ -47,20 +54,25 @@
 
 .google-icon {
   position: absolute;
-  margin-top: 11px;
+  margin-top: 13px;
   margin-left: -8px;
   width: 18px;
   height: 18px;
 }
 
+
 .btn-text {
-  float: right;
+  position: relative;
+  top: -10px; 
+  left: 11px;
+  align-self: center;
+  /* float: right; */
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.2px;
   font-family: "Roboto";
   background-color: #4285f4;
-  width: 80%;
-  height: 100%;
+  width: 77%;
+  height: 98%;
   text-align: center;
 }
