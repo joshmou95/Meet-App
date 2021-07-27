@@ -26,7 +26,7 @@ function WelcomeScreen(props) {
             >
               <b>Sign in with google</b>
             </button>
-            </div>
+          </div>
         </div>
         <a
           href="https://joshmou95.github.io/meet-app/privacy.html"
