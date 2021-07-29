@@ -8,7 +8,7 @@ import './nprogress.css';
 import Container from 'react-bootstrap/Container';
 import { WarningAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
 class App extends Component {
@@ -112,15 +112,17 @@ class App extends Component {
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents} />
           <h4>Events in each city</h4>
-          <ScatterChart width={800} height={400}
-            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="category" dataKey="city" name="city" />
-            <YAxis type="number" dataKey="number" name="number of events" />
-            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-            <Scatter data={this.getData()} fill="#8884d8" />
-            <Scatter data={this.getData()} fill="#82ca9d" />
-          </ScatterChart>
+          <ResponsiveContainer height={400} >
+            <ScatterChart width={800} height={400}
+              margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis type="number" dataKey="number" name="number of events" />
+              <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+              <Scatter data={this.getData()} fill="#82ca9d" />
+            </ScatterChart>
+          </ResponsiveContainer>
           <EventList 
           events={this.state.events} />
           <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
