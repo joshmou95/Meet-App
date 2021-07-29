@@ -112,19 +112,15 @@ class App extends Component {
           numberOfEvents={numberOfEvents}
           updateEvents={this.updateEvents} />
           <h4>Events in each city</h4>
-          <ScatterChart
-            width={400}
-            height={400}
-            margin={{
-              top: 20, right: 20, bottom: 20, left: 20,
-            }}
-          >
-            <CartesianGrid />
+          <ScatterChart width={800} height={400}
+            margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+            <CartesianGrid strokeDasharray="3 3" />
             <XAxis type="category" dataKey="city" name="city" />
             <YAxis type="number" dataKey="number" name="number of events" />
             <Tooltip cursor={{ strokeDasharray: '3 3' }} />
             <Scatter data={this.getData()} fill="#8884d8" />
-            </ScatterChart>
+            <Scatter data={this.getData()} fill="#82ca9d" />
+          </ScatterChart>
           <EventList 
           events={this.state.events} />
           <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
