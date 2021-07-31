@@ -14,13 +14,11 @@ const EventGenre = ({ events }) => {
   const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
 
   const getData = () => {
-    
-    const data = genres.map( g =>{
-      const name = g;
-      const value = events.filter(e => e.summary.split(' ').includes(g)).length
-      return { name, value} ;
-    })
-    // data = data.filter(data => data.value)
+    let data = genres.map((genre) => {
+      const value = events.filter((event) => event.summary.split(' ').includes(genre)).length
+      return { name: genre, value }
+    });
+    data = data.filter(data => data.value)
     return data;
   };
 
@@ -36,6 +34,7 @@ const EventGenre = ({ events }) => {
           cy={200}
           labelLine={false}
           outerRadius={80}
+          innerRadius={8}
           fill="#8884d8"
           dataKey="value"
           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
