@@ -44,7 +44,7 @@ class CitySearch extends Component {
   render() {
     return (
       <Form className="CitySearch">
-          <Form.Label className="mb-0">Choose your nearest city</Form.Label>
+          <Form.Label className="mb-0">Choose your nearest city:</Form.Label>
           <Form.Text>
             <InfoAlert text={this.state.infoText} />
           </Form.Text>     
