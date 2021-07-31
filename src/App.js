@@ -95,7 +95,6 @@ class App extends Component {
       const city = location.split(', ').shift()
       return {city, number};
     })
-    data = data.filter(data => data.value)
     return data;
   };
 
