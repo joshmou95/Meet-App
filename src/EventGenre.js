@@ -11,7 +11,7 @@ const EventGenre = ({ events }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [events]);
 
-  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'AngularJS'];
+  const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
 
   const getData = () => {
     let data = genres.map((genre) => {
