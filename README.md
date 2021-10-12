@@ -1,6 +1,7 @@
 
 # Meet-App
- Objective: To build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
+## Objective: 
+* To build a serverless, progressive web application (PWA) with React using a test-driven development (TDD) technique. The application uses the Google Calendar API to fetch upcoming events.
 
 ![meet app screenshot](https://user-images.githubusercontent.com/80426764/127747839-9a8b5fd3-58a5-4275-be81-b79f343d1f00.png)
 
